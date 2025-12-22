@@ -6,32 +6,263 @@
   <title>Happy Birthday, Prachu — Landing</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600;700&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <style>
-    :root{--dark-pink:#d81b60;--baby-pink:#ffb3d9;--cream:#fff9e6;--peach:#ffc9b3}
-    body{font-family:'Fredoka',system-ui;background:linear-gradient(135deg,#ffb3d9 0%,#e91e63 50%,#f06292 100%);color:#333}
-    .title-font{font-family:'Comfortaa',cursive;font-weight:700}
-    .hand-font{font-family:'Comfortaa',cursive}
-    .float-btn{animation:float 3s ease-in-out infinite}
-    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
-    .birthday-name{letter-spacing:8px;font-size:4.5rem;line-height:1.2;color:#fff;text-shadow:4px 4px 0px #d81b60,8px 8px 0px rgba(233,30,99,0.4)}
-    .cute-emoji{font-size:2.5rem;display:inline-block;margin:0 6px;animation:bounce 2s ease-in-out infinite}
-    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
-    .subtitle-quote{font-size:1.35rem;color:#fff;font-weight:600;margin:12px 0;font-style:italic;text-shadow:2px 2px 4px rgba(216,27,96,0.6);letter-spacing:0.5px}
-    .friend-name{font-size:1.3rem;color:#fff;font-weight:700;margin:16px 0;text-shadow:2px 2px 4px rgba(216,27,96,0.5)}
-    .next-btn{background:linear-gradient(90deg,#d81b60,#e91e63);border:2px solid #ffb3d9;color:white;padding:14px 28px;font-size:1.1rem;border-radius:50px;cursor:pointer;font-weight:700;transition:all 0.3s;box-shadow:0 8px 20px rgba(216,27,96,0.4)}
-    .next-btn:hover{transform:scale(1.08);box-shadow:0 12px 28px rgba(216,27,96,0.6)}
-    .pookie-decor{display:inline-block;font-size:2rem;margin:0 4px}
+    :root {
+      --dark-pink: #d81b60;
+      --baby-pink: #ffb3d9;
+      --cream: #fff9e6;
+      --peach: #ffc9b3;
+      --gold: #ffd700;
+      --light-yellow: #fffacd;
+    }
+    
+    body {
+      font-family: 'Fredoka', system-ui;
+      background: linear-gradient(135deg, #ffb3d9 0%, #e91e63 50%, #f06292 100%);
+      color: #333;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    .title-font {
+      font-family: 'Comfortaa', cursive;
+      font-weight: 700;
+    }
+    
+    .hand-font {
+      font-family: 'Comfortaa', cursive;
+    }
+    
+    .float-btn {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0) rotate(-1deg); }
+      50% { transform: translateY(-12px) rotate(1deg); }
+      100% { transform: translateY(0) rotate(-1deg); }
+    }
+    
+    .birthday-name {
+      letter-spacing: 8px;
+      font-size: 4.5rem;
+      line-height: 1.2;
+      color: #fff;
+      text-shadow: 4px 4px 0px #d81b60, 8px 8px 0px rgba(233, 30, 99, 0.4);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .birthday-name::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 10%;
+      width: 80%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #ffd700, transparent);
+      border-radius: 2px;
+    }
+    
+    .cute-emoji {
+      font-size: 2.5rem;
+      display: inline-block;
+      margin: 0 6px;
+      animation: bounce 2s ease-in-out infinite;
+      filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.2));
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(5deg); }
+    }
+    
+    .subtitle-quote {
+      font-size: 1.35rem;
+      color: #fff;
+      font-weight: 600;
+      margin: 12px 0;
+      font-style: italic;
+      text-shadow: 2px 2px 4px rgba(216, 27, 96, 0.6);
+      letter-spacing: 0.5px;
+      position: relative;
+      padding: 8px 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      transition: all 0.3s ease;
+    }
+    
+    .subtitle-quote:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.02);
+    }
+    
+    .friend-name {
+      font-size: 1.3rem;
+      color: #fff;
+      font-weight: 700;
+      margin: 16px 0;
+      text-shadow: 2px 2px 4px rgba(216, 27, 96, 0.5);
+      position: relative;
+    }
+    
+    .next-btn {
+      background: linear-gradient(90deg, #d81b60, #e91e63, #ff4081);
+      border: 2px solid #ffb3d9;
+      color: white;
+      padding: 16px 32px;
+      font-size: 1.2rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: all 0.3s;
+      box-shadow: 0 8px 20px rgba(216, 27, 96, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .next-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: 0.5s;
+    }
+    
+    .next-btn:hover::before {
+      left: 100%;
+    }
+    
+    .next-btn:hover {
+      transform: scale(1.08) rotate(2deg);
+      box-shadow: 0 12px 28px rgba(216, 27, 96, 0.6);
+      background: linear-gradient(90deg, #ff4081, #e91e63, #d81b60);
+    }
+    
+    .pookie-decor {
+      display: inline-block;
+      font-size: 2rem;
+      margin: 0 4px;
+      animation: swing 3s ease-in-out infinite;
+    }
+    
+    @keyframes swing {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(10deg); }
+      75% { transform: rotate(-10deg); }
+    }
+    
+    .floating-heart {
+      position: absolute;
+      font-size: 1.5rem;
+      color: #ff4081;
+      z-index: -1;
+      opacity: 0.7;
+    }
+    
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background-color: #ffd700;
+      border-radius: 50%;
+      box-shadow: 0 0 10px 2px #ffd700;
+      z-index: -1;
+    }
+    
+    .gift-box {
+      position: relative;
+      display: inline-block;
+      margin: 0 10px;
+    }
+    
+    .gift-box::before {
+      content: '🎁';
+      font-size: 2rem;
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: giftFloat 4s ease-in-out infinite;
+    }
+    
+    @keyframes giftFloat {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-15px); }
+    }
+    
+    .container-box {
+      background: linear-gradient(135deg, rgba(255, 179, 217, 0.4), rgba(233, 30, 99, 0.3));
+      backdrop-filter: blur(15px);
+      border: 3px solid #ffb3d9;
+      box-shadow: 0 20px 40px rgba(216, 27, 96, 0.3), 
+                  inset 0 0 30px rgba(255, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .container-box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transform: rotate(45deg);
+      animation: shine 6s infinite linear;
+    }
+    
+    @keyframes shine {
+      0% { transform: rotate(45deg) translateX(-100%); }
+      100% { transform: rotate(45deg) translateX(100%); }
+    }
   </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-6">
-  <div class="w-full max-w-4xl p-12 rounded-3xl shadow-2xl" style="background:linear-gradient(135deg,rgba(255,179,217,0.4),rgba(233,30,99,0.3));backdrop-filter:blur(10px);border:3px solid #ffb3d9">
-    <div class="text-center">
-      <div class="cute-emoji">🎀</div>
-      <h1 class="birthday-name">H A P P Y  B I R T H D A Y</h1>
-      <div class="cute-emoji">✨</div>
+  <!-- Floating elements -->
+  <div id="floatingElements"></div>
+  
+  <div class="w-full max-w-4xl p-12 rounded-3xl shadow-2xl container-box">
+    <div class="text-center relative z-10">
+      <!-- Animated header with gifts -->
+      <div class="mb-6">
+        <div class="gift-box"></div>
+        <div class="cute-emoji">🎀</div>
+        <div class="cute-emoji">✨</div>
+        <div class="gift-box"></div>
+      </div>
       
-      <h2 class="birthday-name" style="font-size:3.5rem;margin-top:20px;color:#fff;text-shadow:4px 4px 0px #d81b60,8px 8px 0px rgba(233,30,99,0.4)">P R A C H U</h2>
+      <h1 class="birthday-name">H A P P Y  B I R T H D A Y</h1>
+      
+      <div class="my-8">
+        <h2 class="birthday-name" style="font-size:3.5rem;color:#fff;text-shadow:4px 4px 0px #d81b60,8px 8px 0px rgba(233,30,99,0.4)">
+          <span style="color:#ffd700">P</span>
+          <span style="color:#ffb3d9">R</span>
+          <span style="color:#ff4081">A</span>
+          <span style="color:#ffb3d9">C</span>
+          <span style="color:#ffd700">H</span>
+          <span style="color:#ff4081">U</span>
+        </h2>
+      </div>
+      
+      <!-- Animated emojis -->
+      <div class="flex justify-center space-x-4 my-6">
+        <div class="cute-emoji" style="animation-delay: 0.2s">🎉</div>
+        <div class="cute-emoji" style="animation-delay: 0.4s">🥳</div>
+        <div class="cute-emoji" style="animation-delay: 0.6s">🎂</div>
+        <div class="cute-emoji" style="animation-delay: 0.8s">🎈</div>
+        <div class="cute-emoji" style="animation-delay: 1s">💝</div>
+      </div>
       
       <div style="margin-top:30px">
         <p class="subtitle-quote">A true friend is like a four-leaf clover 🍀</p>
@@ -41,31 +272,216 @@
         <p class="subtitle-quote">Your friendship makes my life beautiful ✨</p>
       </div>
 
-      <div class="friend-name" style="margin-top:24px;font-size:1.25rem">
+      <!-- Friend name with decorative elements -->
+      <div class="friend-name mt-8 p-6 rounded-2xl" style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px); border: 2px dashed #ffb3d9;">
         <span class="pookie-decor">🧸</span>
-        Your Best Friend<br>
-        <span style="color:#fff;font-size:1.4rem;text-shadow:2px 2px 4px rgba(216,27,96,0.6)">Sakshi Baviskar</span>
+        <div class="my-2">Made with 💖 by</div>
+        <div style="color:#fff;font-size:1.8rem;text-shadow:2px 2px 4px rgba(216,27,96,0.6); margin: 10px 0; letter-spacing: 2px;">
+          S A K S H I
+        </div>
+        <div style="color:#ffd700;font-size:1.5rem;font-weight:700; margin: 5px 0;">
+          Baviskar
+        </div>
         <span class="pookie-decor">🧸</span>
       </div>
 
-      <div class="mt-8 text-center" style="margin-top:32px">
-        <button class="next-btn float-btn" onclick="handleNextSurprise(event)">🎁 Next Surprise! 🎁</button>
+      <!-- Next button with animation -->
+      <div class="mt-12 text-center">
+        <button class="next-btn float-btn" onclick="handleNextSurprise(event)">
+          <i class="fas fa-gift mr-2"></i>
+          🎁 Open Your Surprise! 🎁
+          <i class="fas fa-gift ml-2"></i>
+        </button>
+        <p class="mt-4 text-white font-medium" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">
+          Click to reveal your special birthday surprise!
+        </p>
       </div>
 
-      <p id="countdown" class="mt-8 text-center text-sm" style="color:#fff;font-weight:600;text-shadow:1px 1px 2px rgba(216,27,96,0.5)"></p>
+      <!-- Countdown timer -->
+      <div id="countdown" class="mt-10 p-4 rounded-xl" style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px); display: inline-block;">
+        <div class="text-white font-bold text-lg mb-2" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.3);">
+          Birthday Countdown 🎂
+        </div>
+        <div id="countdown-timer" class="text-2xl font-bold" style="color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+          00:00:00
+        </div>
+      </div>
+      
+      <!-- Music player -->
+      <div class="mt-8">
+        <button id="musicToggle" class="px-4 py-2 rounded-full bg-pink-600 text-white hover:bg-pink-700 transition">
+          <i class="fas fa-music mr-2"></i>
+          <span>Play Birthday Music</span>
+        </button>
+      </div>
     </div>
   </div>
 
-  <script src="assets/js/site-multi.js"></script>
   <script>
+    // Create floating hearts and sparkles
+    function createFloatingElements() {
+      const container = document.getElementById('floatingElements');
+      const emojis = ['❤️', '💖', '💝', '🎀', '✨', '🎉', '🎊', '🥳'];
+      
+      for (let i = 0; i < 20; i++) {
+        // Create hearts
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+        heart.style.left = `${Math.random() * 100}%`;
+        heart.style.top = `${Math.random() * 100}%`;
+        heart.style.animation = `float ${3 + Math.random() * 4}s ease-in-out infinite`;
+        heart.style.animationDelay = `${Math.random() * 5}s`;
+        heart.style.fontSize = `${1 + Math.random() * 2}rem`;
+        container.appendChild(heart);
+        
+        // Create sparkles
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = `${Math.random() * 100}%`;
+        sparkle.style.top = `${Math.random() * 100}%`;
+        sparkle.style.animation = `float ${2 + Math.random() * 3}s ease-in-out infinite`;
+        sparkle.style.animationDelay = `${Math.random() * 5}s`;
+        container.appendChild(sparkle);
+      }
+    }
+    
+    // Handle next surprise button
     function handleNextSurprise(e) {
       e.preventDefault();
-      confetti({particleCount:150, spread:160, origin:{y:0.6}});
-      tryPlayMusic();
-      setTimeout(()=> location.href = 'memory.html', 600);
+      
+      // Big confetti explosion
+      confetti({
+        particleCount: 300,
+        spread: 180,
+        origin: { y: 0.6 }
+      });
+      
+      // Additional confetti effects
+      setTimeout(() => {
+        confetti({
+          particleCount: 100,
+          angle: 60,
+          spread: 80,
+          origin: { x: 0 }
+        });
+        
+        confetti({
+          particleCount: 100,
+          angle: 120,
+          spread: 80,
+          origin: { x: 1 }
+        });
+      }, 250);
+      
+      // Play birthday sound
+      const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-happy-birthday-horn-576.mp3');
+      audio.play().catch(e => console.log("Audio play failed:", e));
+      
+      // Animate button
+      e.target.style.transform = 'scale(1.2)';
+      e.target.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Loading Surprise...';
+      
+      // Redirect after delay
+      setTimeout(() => {
+        window.location.href = 'memory.html';
+      }, 1200);
     }
-
-    startCountdown(document.getElementById('countdown'), 12, 24);
+    
+    // Countdown timer
+    function updateCountdown() {
+      // Set birthday date (December 24th of current year)
+      const now = new Date();
+      const currentYear = now.getFullYear();
+      const birthday = new Date(currentYear, 11, 24); // December 24 (month is 0-indexed)
+      
+      // If birthday has passed this year, set for next year
+      if (now > birthday) {
+        birthday.setFullYear(currentYear + 1);
+      }
+      
+      const diff = birthday - now;
+      
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      
+      const timerElement = document.getElementById('countdown-timer');
+      if (timerElement) {
+        timerElement.innerHTML = `
+          <div style="display: inline-block; margin: 0 5px;">
+            <div style="font-size: 0.8rem; color: #ffb3d9;">DAYS</div>
+            <div>${days.toString().padStart(2, '0')}</div>
+          </div>
+          <div style="display: inline-block; margin: 0 5px;">:</div>
+          <div style="display: inline-block; margin: 0 5px;">
+            <div style="font-size: 0.8rem; color: #ffb3d9;">HOURS</div>
+            <div>${hours.toString().padStart(2, '0')}</div>
+          </div>
+          <div style="display: inline-block; margin: 0 5px;">:</div>
+          <div style="display: inline-block; margin: 0 5px;">
+            <div style="font-size: 0.8rem; color: #ffb3d9;">MINUTES</div>
+            <div>${minutes.toString().padStart(2, '0')}</div>
+          </div>
+          <div style="display: inline-block; margin: 0 5px;">:</div>
+          <div style="display: inline-block; margin: 0 5px;">
+            <div style="font-size: 0.8rem; color: #ffb3d9;">SECONDS</div>
+            <div>${seconds.toString().padStart(2, '0')}</div>
+          </div>
+        `;
+      }
+    }
+    
+    // Music toggle
+    function setupMusicToggle() {
+      const toggleBtn = document.getElementById('musicToggle');
+      let musicPlaying = false;
+      let audio = null;
+      
+      toggleBtn.addEventListener('click', () => {
+        if (!musicPlaying) {
+          // Create and play birthday music
+          audio = new Audio('https://assets.mixkit.co/music/preview/mixkit-happy-birthday-to-you-443.mp3');
+          audio.loop = true;
+          audio.volume = 0.5;
+          audio.play().then(() => {
+            musicPlaying = true;
+            toggleBtn.innerHTML = '<i class="fas fa-volume-up mr-2"></i><span>Stop Music</span>';
+            toggleBtn.style.backgroundColor = '#e91e63';
+          }).catch(e => {
+            console.log("Audio play failed:", e);
+            toggleBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i><span>Music Error</span>';
+          });
+        } else {
+          // Stop music
+          if (audio) {
+            audio.pause();
+            audio.currentTime = 0;
+          }
+          musicPlaying = false;
+          toggleBtn.innerHTML = '<i class="fas fa-music mr-2"></i><span>Play Birthday Music</span>';
+          toggleBtn.style.backgroundColor = '';
+        }
+      });
+    }
+    
+    // Initialize everything when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      createFloatingElements();
+      setupMusicToggle();
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+      
+      // Trigger small confetti on load
+      setTimeout(() => {
+        confetti({
+          particleCount: 50,
+          spread: 100,
+          origin: { y: 0.3 }
+        });
+      }, 500);
+    });
   </script>
 </body>
 </html>
