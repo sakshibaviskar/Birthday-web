@@ -156,137 +156,67 @@
             margin: 0 auto;
         }
 
-        /* Music Player */
-        .music-player {
+        /* YouTube Player Section */
+        .youtube-player {
             background: white;
             border-radius: 25px;
             padding: 2.5rem;
             margin-bottom: 3rem;
             box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
+            text-align: center;
         }
 
-        .player-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 2rem;
-        }
-
-        .player-header h3 {
+        .youtube-player h3 {
             font-size: 1.8rem;
             color: var(--secondary);
+            margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
         }
 
-        .player-header h3 i {
+        .youtube-player h3 i {
             color: var(--primary);
         }
 
-        .now-playing {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .song-title {
-            font-size: 2.2rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .song-artist {
-            font-size: 1.3rem;
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .player-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .control-btn {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(255, 64, 129, 0.3);
-        }
-
-        .control-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(255, 64, 129, 0.4);
-        }
-
-        .play-btn {
-            width: 70px;
-            height: 70px;
-            font-size: 1.8rem;
-        }
-
-        .progress-container {
+        .youtube-container {
+            position: relative;
             width: 100%;
-            height: 8px;
-            background: #e0e0e0;
-            border-radius: 4px;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             margin-bottom: 1.5rem;
-            cursor: pointer;
-            position: relative;
         }
 
-        .progress-bar {
+        .youtube-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            border-radius: 4px;
-            width: 0%;
-            transition: width 0.1s linear;
+            border: none;
         }
 
-        .time-display {
-            display: flex;
-            justify-content: space-between;
-            color: #777;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-        }
-
-        .volume-control {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
+        .video-info {
+            text-align: left;
             margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 64, 129, 0.05);
+            border-radius: 10px;
         }
 
-        .volume-slider {
-            width: 150px;
-            height: 6px;
-            background: #e0e0e0;
-            border-radius: 3px;
-            cursor: pointer;
-            position: relative;
+        .video-info h4 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
         }
 
-        .volume-level {
-            height: 100%;
-            background: var(--primary);
-            border-radius: 3px;
-            width: 70%;
+        .video-info p {
+            color: #666;
+            font-size: 0.95rem;
         }
 
         /* Songs List */
@@ -321,11 +251,19 @@
             border-left: 5px solid var(--primary);
         }
 
+        .song-item.youtube {
+            border-left: 5px solid #ff0000;
+        }
+
         .song-icon {
             font-size: 2.5rem;
             color: var(--primary);
             min-width: 50px;
             text-align: center;
+        }
+
+        .song-item.youtube .song-icon {
+            color: #ff0000;
         }
 
         .song-info {
@@ -343,6 +281,17 @@
             font-size: 0.95rem;
         }
 
+        .youtube-badge {
+            display: inline-block;
+            background: #ff0000;
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+
         .song-duration {
             color: #777;
             font-weight: 600;
@@ -355,6 +304,10 @@
             font-size: 1.5rem;
             min-width: 30px;
             text-align: center;
+        }
+
+        .song-item.youtube .play-indicator {
+            color: #ff0000;
         }
 
         /* Playlist Instructions */
@@ -460,20 +413,6 @@
                 font-size: 3rem;
             }
 
-            .player-controls {
-                gap: 1rem;
-            }
-
-            .control-btn {
-                width: 50px;
-                height: 50px;
-            }
-
-            .play-btn {
-                width: 60px;
-                height: 60px;
-            }
-
             .song-item {
                 flex-wrap: wrap;
             }
@@ -481,6 +420,10 @@
             .song-duration {
                 text-align: left;
                 margin-left: 60px;
+            }
+
+            .youtube-player {
+                padding: 1.5rem;
             }
         }
 
@@ -493,31 +436,12 @@
                 font-size: 1rem;
             }
 
-            .music-player {
-                padding: 1.5rem;
-            }
-
             .song-title {
                 font-size: 1.8rem;
             }
 
             .song-artist {
                 font-size: 1.1rem;
-            }
-
-            .player-controls {
-                gap: 0.5rem;
-            }
-
-            .control-btn {
-                width: 45px;
-                height: 45px;
-                font-size: 1.2rem;
-            }
-
-            .play-btn {
-                width: 55px;
-                height: 55px;
             }
         }
     </style>
@@ -540,167 +464,66 @@
     <!-- Main Content -->
     <main class="container">
         <div class="page-header">
-            <h2>Birthday Playlist</h2>
-            <p>Celebrate Prachu's special day with these specially curated birthday songs. Click any song to play!</p>
+            <h2>Birthday YouTube Playlist</h2>
+            <p>Celebrate Prachu's special day with these specially curated birthday songs from YouTube. Click any song to play!</p>
         </div>
 
-        <!-- Music Player -->
-        <div class="music-player">
-            <div class="player-header">
-                <h3><i class="fas fa-music"></i> Now Playing</h3>
-                <div class="player-status" id="playerStatus">Stopped</div>
-            </div>
+        <!-- YouTube Player -->
+        <div class="youtube-player">
+            <h3><i class="fab fa-youtube"></i> Now Playing</h3>
             
-            <div class="now-playing">
-                <div class="song-title" id="currentSong">Happy Birthday</div>
-                <div class="song-artist" id="currentArtist">Birthday Song</div>
-            </div>
-
-            <div class="progress-container" id="progressContainer">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-
-            <div class="time-display">
-                <span id="currentTime">0:00</span>
-                <span id="totalTime">0:00</span>
-            </div>
-
-            <div class="player-controls">
-                <button class="control-btn" id="prevBtn" title="Previous">
-                    <i class="fas fa-step-backward"></i>
-                </button>
-                
-                <button class="control-btn play-btn" id="playPauseBtn" title="Play/Pause">
-                    <i class="fas fa-play" id="playIcon"></i>
-                </button>
-                
-                <button class="control-btn" id="nextBtn" title="Next">
-                    <i class="fas fa-step-forward"></i>
-                </button>
-            </div>
-
-            <div class="volume-control">
-                <i class="fas fa-volume-up"></i>
-                <div class="volume-slider" id="volumeSlider">
-                    <div class="volume-level" id="volumeLevel"></div>
+            <div class="youtube-container" id="youtubeContainer">
+                <!-- YouTube iframe will be inserted here by JavaScript -->
+                <div class="placeholder">
+                    <i class="fab fa-youtube" style="font-size: 4rem; color: #ff0000; margin-bottom: 1rem;"></i>
+                    <h4 style="color: var(--secondary);">Select a song to play</h4>
+                    <p style="color: #666;">Click on any song from the playlist below to start playing</p>
                 </div>
-                <i class="fas fa-volume-down"></i>
+            </div>
+
+            <div class="video-info" id="videoInfo">
+                <h4 id="videoTitle">No song selected</h4>
+                <p id="videoDescription">Select a song from the playlist to start playing</p>
             </div>
         </div>
 
         <!-- Songs List -->
         <div class="songs-list" id="songsList">
             <!-- Song 1 -->
-            <div class="song-item playing" data-index="0">
+            <div class="song-item youtube playing" data-index="0" data-youtube="https://www.youtube.com/embed/HGDz3vJ9nuY?si=LSaNluY6PYPRFDn9&autoplay=1">
                 <div class="song-icon">
-                    <i class="fas fa-birthday-cake"></i>
+                    <i class="fab fa-youtube"></i>
                 </div>
                 <div class="song-info">
-                    <h4>Happy Birthday</h4>
-                    <p>The classic birthday song for Prachu's special day</p>
+                    <h4>Happy Birthday Song <span class="youtube-badge">YouTube</span></h4>
+                    <p>The classic "Happy Birthday to You" song with animations</p>
                 </div>
-                <div class="song-duration">1:45</div>
+                <div class="song-duration">2:15</div>
                 <div class="play-indicator">
                     <i class="fas fa-volume-up"></i>
                 </div>
             </div>
 
-            <!-- Song 2 -->
-            <div class="song-item" data-index="1">
-                <div class="song-icon">
-                    <i class="fas fa-heart"></i>
-                </div>
-                <div class="song-info">
-                    <h4>Celebration Time</h4>
-                    <p>Upbeat song to celebrate this wonderful occasion</p>
-                </div>
-                <div class="song-duration">3:22</div>
-                <div class="play-indicator">
-                    <i class="fas fa-play"></i>
-                </div>
-            </div>
-
-            <!-- Song 3 -->
-            <div class="song-item" data-index="2">
-                <div class="song-icon">
-                    <i class="fas fa-star"></i>
-                </div>
-                <div class="song-info">
-                    <h4>You Are My Sunshine</h4>
-                    <p>A sweet melody for the star of the day</p>
-                </div>
-                <div class="song-duration">2:58</div>
-                <div class="play-indicator">
-                    <i class="fas fa-play"></i>
-                </div>
-            </div>
-
-            <!-- Song 4 -->
-            <div class="song-item" data-index="3">
-                <div class="song-icon">
-                    <i class="fas fa-gift"></i>
-                </div>
-                <div class="song-info">
-                    <h4>Best Day of My Life</h4>
-                    <p>Celebrating the best day for the best person</p>
-                </div>
-                <div class="song-duration">3:15</div>
-                <div class="play-indicator">
-                    <i class="fas fa-play"></i>
-                </div>
-            </div>
-
-            <!-- Song 5 -->
-            <div class="song-item" data-index="4">
-                <div class="song-icon">
-                    <i class="fas fa-music"></i>
-                </div>
-                <div class="song-info">
-                    <h4>Dance Tonight</h4>
-                    <p>Let's dance and celebrate Prachu's birthday</p>
-                </div>
-                <div class="song-duration">3:45</div>
-                <div class="play-indicator">
-                    <i class="fas fa-play"></i>
-                </div>
-            </div>
-
-            <!-- Song 6 -->
-            <div class="song-item" data-index="5">
-                <div class="song-icon">
-                    <i class="fas fa-smile"></i>
-                </div>
-                <div class="song-info">
-                    <h4>Joy to the World</h4>
-                    <p>Spreading joy on this special December birthday</p>
-                </div>
-                <div class="song-duration">4:10</div>
-                <div class="play-indicator">
-                    <i class="fas fa-play"></i>
-                </div>
-            </div>
-        </div>
-
         <!-- Playlist Instructions -->
         <div class="playlist-instructions">
-            <h3><i class="fas fa-headphones-alt"></i> How to Add Your Own Songs</h3>
+            <h3><i class="fas fa-headphones-alt"></i> How to Add Your Own YouTube Songs</h3>
             <div class="instructions-content">
                 <div class="instruction-step">
                     <div class="step-number">1</div>
-                    <h4>Add Your Music Files</h4>
-                    <p>Create a folder named <code>assets/music/</code> and add your MP3 files there. Name them appropriately (e.g., song1.mp3, song2.mp3).</p>
+                    <h4>Find YouTube Videos</h4>
+                    <p>Go to YouTube and find birthday songs or celebration videos you want to add to Prachu's playlist.</p>
                 </div>
                 
                 <div class="instruction-step">
                     <div class="step-number">2</div>
-                    <h4>Update the Playlist</h4>
-                    <p>In the JavaScript section, update the <code>playlist</code> array with your song details - title, artist, duration, and file path.</p>
+                    <h4>Get YouTube Embed Link</h4>
+                    <p>Click "Share" on the YouTube video, then "Embed". Copy the URL that looks like: <code>https://www.youtube.com/embed/VIDEO_ID</code></p>
                 </div>
                 
                 <div class="instruction-step">
                     <div class="step-number">3</div>
-                    <h4>Customize Song Info</h4>
-                    <p>Update the song titles, artists, and descriptions in the HTML to match your personal playlist for Prachu.</p>
+                    <h4>Update the Playlist</h4>
+                    <p>Add a new song item in the HTML with the <code>data-youtube</code> attribute containing your YouTube embed URL.</p>
                 </div>
             </div>
         </div>
@@ -739,106 +562,44 @@
                 decorations.appendChild(bar);
             }
 
-            // Music Player Functionality
-            const playlist = [
-                {
-                    title: "Happy Birthday",
-                    artist: "Birthday Song",
-                    duration: "1:45",
-                    src: "#" // Replace with "assets/music/song1.mp3"
-                },
-                {
-                    title: "Celebration Time",
-                    artist: "Party Music",
-                    duration: "3:22",
-                    src: "#"
-                },
-                {
-                    title: "You Are My Sunshine",
-                    artist: "Classic Melody",
-                    duration: "2:58",
-                    src: "#"
-                },
-                {
-                    title: "Best Day of My Life",
-                    artist: "Celebration Mix",
-                    duration: "3:15",
-                    src: "#"
-                },
-                {
-                    title: "Dance Tonight",
-                    artist: "Party Mix",
-                    duration: "3:45",
-                    src: "#"
-                },
-                {
-                    title: "Joy to the World",
-                    artist: "Holiday Celebration",
-                    duration: "4:10",
-                    src: "#"
-                }
-            ];
-
-            let currentSongIndex = 0;
-            let isPlaying = false;
-            let currentTime = 0;
-            let totalTime = 105; // in seconds for first song
-            
             // DOM Elements
-            const playPauseBtn = document.getElementById('playPauseBtn');
-            const playIcon = document.getElementById('playIcon');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const progressBar = document.getElementById('progressBar');
-            const progressContainer = document.getElementById('progressContainer');
-            const currentTimeDisplay = document.getElementById('currentTime');
-            const totalTimeDisplay = document.getElementById('totalTime');
-            const currentSongDisplay = document.getElementById('currentSong');
-            const currentArtistDisplay = document.getElementById('currentArtist');
-            const playerStatus = document.getElementById('playerStatus');
-            const volumeSlider = document.getElementById('volumeSlider');
-            const volumeLevel = document.getElementById('volumeLevel');
+            const youtubeContainer = document.getElementById('youtubeContainer');
+            const videoTitle = document.getElementById('videoTitle');
+            const videoDescription = document.getElementById('videoDescription');
             const songItems = document.querySelectorAll('.song-item');
             
-            // Format time as MM:SS
-            function formatTime(seconds) {
-                const mins = Math.floor(seconds / 60);
-                const secs = Math.floor(seconds % 60);
-                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-            }
-            
-            // Update progress bar
-            function updateProgress() {
-                if (isPlaying) {
-                    currentTime += 1;
-                    if (currentTime > totalTime) {
-                        playNextSong();
-                        return;
-                    }
-                    
-                    const progressPercent = (currentTime / totalTime) * 100;
-                    progressBar.style.width = `${progressPercent}%`;
-                    currentTimeDisplay.textContent = formatTime(currentTime);
-                }
-            }
-            
-            // Update song info display
-            function updateSongInfo() {
-                const song = playlist[currentSongIndex];
-                currentSongDisplay.textContent = song.title;
-                currentArtistDisplay.textContent = song.artist;
-                totalTimeDisplay.textContent = song.duration;
+            // Function to load YouTube video
+            function loadYouTubeVideo(index) {
+                const songItem = songItems[index];
+                const youtubeUrl = songItem.getAttribute('data-youtube');
                 
-                // Convert duration string to seconds
-                const timeParts = song.duration.split(':');
-                totalTime = parseInt(timeParts[0]) * 60 + parseInt(timeParts[1]);
-                currentTime = 0;
-                progressBar.style.width = '0%';
-                currentTimeDisplay.textContent = '0:00';
+                // Extract video info from the song item
+                const songTitleElement = songItem.querySelector('.song-info h4');
+                let videoTitleText = songTitleElement.textContent;
+                // Remove the YouTube badge text
+                videoTitleText = videoTitleText.replace(' YouTube', '').replace('YouTube', '');
                 
-                // Update song items highlighting
-                songItems.forEach((item, index) => {
-                    if (index === currentSongIndex) {
+                const videoDescriptionText = songItem.querySelector('.song-info p').textContent;
+                
+                // Update video info display
+                videoTitle.textContent = videoTitleText;
+                videoDescription.textContent = videoDescriptionText;
+                
+                // Create YouTube iframe
+                const iframe = document.createElement('iframe');
+                iframe.src = youtubeUrl;
+                iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+                iframe.allowFullscreen = true;
+                iframe.referrerPolicy = "strict-origin-when-cross-origin";
+                iframe.title = "YouTube video player";
+                
+                // Clear container and add iframe
+                youtubeContainer.innerHTML = '';
+                youtubeContainer.appendChild(iframe);
+                
+                // Update song highlighting
+                songItems.forEach((item, itemIndex) => {
+                    if (itemIndex === index) {
                         item.classList.add('playing');
                         item.querySelector('.play-indicator i').className = 'fas fa-volume-up';
                     } else {
@@ -848,105 +609,29 @@
                 });
             }
             
-            // Play/Pause functionality
-            function togglePlayPause() {
-                isPlaying = !isPlaying;
-                
-                if (isPlaying) {
-                    playIcon.className = 'fas fa-pause';
-                    playerStatus.textContent = 'Playing';
-                    
-                    // Start progress simulation
-                    progressInterval = setInterval(updateProgress, 1000);
-                } else {
-                    playIcon.className = 'fas fa-play';
-                    playerStatus.textContent = 'Paused';
-                    
-                    // Stop progress simulation
-                    clearInterval(progressInterval);
-                }
-            }
-            
-            // Play next song
-            function playNextSong() {
-                currentSongIndex = (currentSongIndex + 1) % playlist.length;
-                updateSongInfo();
-                if (isPlaying) {
-                    // If already playing, continue with new song
-                    progressInterval = setInterval(updateProgress, 1000);
-                }
-            }
-            
-            // Play previous song
-            function playPrevSong() {
-                currentSongIndex = (currentSongIndex - 1 + playlist.length) % playlist.length;
-                updateSongInfo();
-                if (isPlaying) {
-                    progressInterval = setInterval(updateProgress, 1000);
-                }
-            }
-            
-            // Set progress on click
-            function setProgress(e) {
-                const width = this.clientWidth;
-                const clickX = e.offsetX;
-                const percent = (clickX / width) * 100;
-                
-                progressBar.style.width = `${percent}%`;
-                currentTime = (percent / 100) * totalTime;
-                currentTimeDisplay.textContent = formatTime(currentTime);
-            }
-            
-            // Set volume
-            function setVolume(e) {
-                const width = this.clientWidth;
-                const clickX = e.offsetX;
-                const percent = (clickX / width) * 100;
-                
-                volumeLevel.style.width = `${percent}%`;
-            }
-            
-            // Event Listeners
-            playPauseBtn.addEventListener('click', togglePlayPause);
-            nextBtn.addEventListener('click', playNextSong);
-            prevBtn.addEventListener('click', playPrevSong);
-            progressContainer.addEventListener('click', setProgress);
-            volumeSlider.addEventListener('click', setVolume);
-            
-            // Song item clicks
+            // Add click events to song items
             songItems.forEach(item => {
                 item.addEventListener('click', function() {
                     const index = parseInt(this.getAttribute('data-index'));
-                    if (index !== currentSongIndex) {
-                        currentSongIndex = index;
-                        updateSongInfo();
-                        if (!isPlaying) {
-                            togglePlayPause();
-                        }
-                    } else {
-                        togglePlayPause();
-                    }
+                    loadYouTubeVideo(index);
                 });
             });
             
-            // Initialize
-            updateSongInfo();
+            // Initialize with first video
+            loadYouTubeVideo(0);
             
-            // Add instructions for adding real music
+            // Add instructions for adding more YouTube videos
             setTimeout(() => {
-                const playerHeader = document.querySelector('.player-header');
-                const instruction = document.createElement('div');
-                instruction.style.background = 'rgba(255, 215, 64, 0.1)';
-                instruction.style.padding = '1rem';
-                instruction.style.borderRadius = '10px';
-                instruction.style.marginTop = '1rem';
-                instruction.style.fontSize = '0.9rem';
-                instruction.style.color = 'var(--secondary)';
-                instruction.innerHTML = `
-                    <p style="margin: 0;"><i class="fas fa-info-circle"></i> This is a simulated player. Add your MP3 files to the <code>assets/music/</code> folder and update the playlist in the JavaScript to play real music.</p>
+                const instructions = document.querySelector('.playlist-instructions .instructions-content');
+                const customStep = document.createElement('div');
+                customStep.className = 'instruction-step';
+                customStep.innerHTML = `
+                    <div class="step-number">4</div>
+                    <h4>Add Custom YouTube Links</h4>
+                    <p>You can add any YouTube video by getting its embed URL and adding a new <code>&lt;div class="song-item youtube"&gt;</code> element with the <code>data-youtube</code> attribute.</p>
                 `;
-                playerHeader.parentNode.insertBefore(instruction, playerHeader.nextSibling);
-            }, 1500);
+                instructions.appendChild(customStep);
+            }, 1000);
         });
     </script>
 </body>
